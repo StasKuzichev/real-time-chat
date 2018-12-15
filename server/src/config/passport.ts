@@ -6,7 +6,7 @@ import { User } from "../models";
 
 export class PassportConfig {
 
-  public passport: Passport;
+  public passport: any;
 
   constructor(passport: any) {
     this.passport = passport;
@@ -14,8 +14,8 @@ export class PassportConfig {
 
   public init() {
     const opts = {
-      jwtFromRequest: ExtractJwt.fromAuthHeader(),
-      secretOrKey: process.env.APPLICATION_SECRET,
+      jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("jwt"),
+      secretOrKey: process.env.APP_SECRET,
     };
 
     this.passport.use(new Strategy(opts, (jwtPayload, done) => {

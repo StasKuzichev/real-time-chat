@@ -13,13 +13,15 @@ Ensure you have the following installed:
 
 ## Run Server
 
+Copy **.env.example** file into **.env** and change enviroment variables
+
 To run server locally in terminal:
 
 ```bash
 $ cd server
-$ npm install -g gulp-cli
-$ npm install
-$ gulp build
+$ npm i -g gulp-cli
+$ npm i
+$ npm run-script build
 $ npm start
 ```
 
@@ -31,7 +33,7 @@ Open other terminal and run following:
 
 ```bash
 $ cd client
-$ npm install
+$ npm i
 $ ng serve
 ```
 

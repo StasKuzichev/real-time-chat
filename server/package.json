@@ -13,16 +13,22 @@
   "author": "Stas Kuzichev <staskuzichev@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "gulp-clean": "^0.4.0",
     "mongodb": "^3.1.10",
     "mongoose": "^5.4.0",
+    "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "winston": "^3.1.0"
   },
   "devDependencies": {
     "@types/express": "^4.16.0",
+    "@types/mongoose": "^5.3.5",
+    "@types/node": "^10.12.15",
     "@types/passport": "^0.4.7",
     "@types/passport-jwt": "^3.0.1",
     "@types/socket.io": "^2.1.2",
