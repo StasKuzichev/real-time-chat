@@ -22,7 +22,9 @@ export class Auth extends BaseRoute {
             }
 
             User.findByEmail(email, (err, user) => {
-                if(user) {
+                if (err) throw err;
+
+                if (user) {
                     User.comparePassword(req.body.password, user.password, (err, isMatch) => {
                         if (err) {
                             this.logger.error(err.toString());
@@ -32,7 +34,7 @@ export class Auth extends BaseRoute {
                                 message: 'something went wrong.'
                             });
                         } else if (isMatch) {
-                            const token = jwt.sign(user, process.env.APP_SECRET, {
+                            const token = jwt.sign(user.toJSON(), process.env.APP_SECRET, {
                                 expiresIn: 604800 // 1 week
                             });
 
@@ -91,7 +93,7 @@ export class Auth extends BaseRoute {
                         password: password,
                     });
 
-                    User.createUser(user, (err, user)=>{
+                    User.createUser(user, (err, user) => {
                         if (err) {
                             this.logger.error(err.toString());
                             res.status(500);

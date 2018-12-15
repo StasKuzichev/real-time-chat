@@ -1,5 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 import { NextFunction, Request, Response } from 'express';
+import { IUser } from '../models/user';
 
 export const guard = (req: Request, res: Response, 
     next: NextFunction) => {
@@ -10,7 +11,7 @@ export const guard = (req: Request, res: Response,
             message: 'No token provided.'
         });
 
-        jwt.verify(token, process.env.APP_SECRET, (err, user: any) => {
+        jwt.verify(token, process.env.APP_SECRET, (err, user: IUser) => {
             if (err) {
                 // Will it actually log? this - can have wrong Context
                 this.logger.error(err.toString());
@@ -19,8 +20,13 @@ export const guard = (req: Request, res: Response,
                     message: 'Failed to authenticate token.'
                 });
             }
-
-            req.body.user = user._doc;
+            
+            req.body.user = {
+                id: user._id,
+                name: user.name,                
+                email: user.email
+            };
+            
             next();
 
         });

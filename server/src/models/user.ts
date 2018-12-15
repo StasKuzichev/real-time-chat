@@ -25,7 +25,9 @@ const userSchema = new Schema({
 });
 
 userSchema.static('createUser', (user: IUser, callback: Function) => {
-    bcrypt.getSalt(10, (err, salt) => {
+    bcrypt.genSalt(10, (err, salt) => {
+        if (err) throw err;
+
         bcrypt.hash(user.password, salt, (err, hash) => {
             if (err) throw err;
 

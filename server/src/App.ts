@@ -20,10 +20,6 @@ class App {
         this.routes();
     }
 
-
-    /**
-     * database connection
-     */
     private database(): void {
         mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
         mongoose.connection.on('error', () => {
@@ -32,9 +28,6 @@ class App {
         });
     }
 
-    /**
-     * http(s) request middleware
-     */
     private middleware(): void {
         this.express.use(logger('dev'));
         this.express.use(bodyParser.json());
@@ -54,17 +47,11 @@ class App {
         const pConfig = new PassportConfig(passport);
         pConfig.init();
     }
-
-    /**
-     * app environment configuration
-     */
+    
     private setEnvironment(): void {
         dotenv.config({ path: '.env' });
     }
 
-    /**
-     * API main v1 routes
-     */
     private routes(): void {
         this.express.use('/v1', routers);
         this.express.use('/', (req, res) => {
