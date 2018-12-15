@@ -4,6 +4,9 @@
 /server/node_modules
 /server/dist
 /server/npm-debug.log
+/server/logs
+/server/.env
+/server/application.log
 
 ## client
 # compiled output
