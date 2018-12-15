@@ -1,0 +1,11 @@
+{
+  "name": "chat-server",
+  "version": "0.0.1",
+  "description": "Application that serve real-time chat",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js"
+  },
+  "author": "Stas Kuzichev <staskuzichev@gmail.com>",
+  "license": "ISC"
+}
