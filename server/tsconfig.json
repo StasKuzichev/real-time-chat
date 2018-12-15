@@ -1,10 +1,20 @@
 {
-  "files": [
-    "src/*.ts",
-    "src/model/*.ts"
-  ],
   "compilerOptions": {
-    "noImplicitAny": true,
-    "target": "es5"
-  }
+    "target": "es6",
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "outDir": "dist"
+  },
+  "include": [
+    "src/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "api-doc",
+    "config",
+    "environment",
+    "middleware",
+    "routers",
+    "services"
+  ]
 }
